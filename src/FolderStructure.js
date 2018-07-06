@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import map from 'lodash/map';
-import closeIcon from '../images/play-button.svg';
 // import from './styles.css';
 
 

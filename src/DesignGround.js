@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import utils from '../www/js/utils.js';
 import Builder from './Builder';
+import SiteTree from './SiteTree'
 import { Link } from 'react-router-dom';
 class CraftBoard extends Component {
    super() {
@@ -14,9 +15,15 @@ class CraftBoard extends Component {
       var compList = document.querySelector('#comp-json'); // Using a class instead, see note below.
       compList.classList.toggle('show');
    };
+   showSiteTree() {
+      var compList = document.querySelector('#site-tree'); // Using a class instead, see note below.
+      compList.classList.toggle('show');
+   };
    saveTheme() {
       $.ajax({
-         url: "http://192.168.3.92:8080/chat",
+         url: "http://192.168.3.92:8000/theme/save-theme/",
+         method: "POST",
+         data: JSON.stringify({name: "GALE", json_data: window.tree, site_thumb: JSON.stringify(window.treeThumb) }),
          success: function(res){
             console.log(res);
          }
@@ -26,57 +33,61 @@ class CraftBoard extends Component {
       return (
          <div className="the-container">
             <div className="go-left" onClick={this.showCompList}>
-               &gt;
+               Component List
+            </div>
+            <div className="site-tree-button" onClick={this.showSiteTree}>
+               Site Tree
             </div>
             <div className="col-md-12 button-list">
                <button onClick={utils.buildTree.bind(utils)}>
                   Build The tree
                </button>
             </div>
-            <div id='comp-list' className="left-section">
-               <div className="col-md-12">
-                  <div id="div3" className="col-md-12 comp-list">
-                     <div className="comp-holder">
-                        <span> component 1: </span>
-                        <span className="select-for-add" data-forcomp="comp1" onClick={utils.clickForDrag.bind(utils)}> + </span>
-                        <div id="comp1" data-compname="a-test-comp" className="a-test-component"
-                           >
-                           A TEST COMPONENT
-                        </div>
+            <div id='site-tree' className="col-md-12 site-tree">
+               <SiteTree />
+            </div>
+            <div id='comp-list' className="col-md-12 left-section">
+               <div id="div3" className="col-md-10 comp-list">
+                  <div className="comp-holder">
+                     <span> component 1: </span>
+                     <span className="select-for-add" data-forcomp="comp1" onClick={utils.clickForDrag.bind(utils)}> + </span>
+                     <div id="comp1" data-compname="a-test-comp" className="a-test-component"
+                        >
+                        A TEST COMPONENT
                      </div>
-                     <div className="comp-holder">
-                        <span> component 2: </span>
-                        <span className="select-for-add" data-forcomp="comp2" onClick={utils.clickForDrag.bind(utils)}> + </span>
-                        <div id="comp2" data-compname="a-2nd-test-comp" className="a-test-component"
-                           >
-                           Another TEST COMPONENT
-                        </div>
+                  </div>
+                  <div className="comp-holder">
+                     <span> component 2: </span>
+                     <span className="select-for-add" data-forcomp="comp2" onClick={utils.clickForDrag.bind(utils)}> + </span>
+                     <div id="comp2" data-compname="a-2nd-test-comp" className="a-test-component"
+                        >
+                        Another TEST COMPONENT
                      </div>
-                     <div className="comp-holder">
-                        <span> component 3: </span>
-                        <span className="select-for-add" data-forcomp="comp3" onClick={utils.clickForDrag.bind(utils)}> + </span>
-                        <div id="comp3" data-compname="a-row" className="a-row"
-                           >
-                        </div>
+                  </div>
+                  <div className="comp-holder">
+                     <span> component 3: </span>
+                     <span className="select-for-add" data-forcomp="comp3" onClick={utils.clickForDrag.bind(utils)}> + </span>
+                     <div id="comp3" data-compname="a-row" className="a-row"
+                        >
                      </div>
-                     <div className="comp-holder">
-                        <span> component 4: </span>
-                        <span className="select-for-add" data-forcomp="comp4" onClick={utils.clickForDrag.bind(utils)}> + </span>
-                        <div id="comp4" data-compname="a-gid"
-                            className="a-grid">
-                           <div className="left" id="comp4-left" data-compname="a-gid-left" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
+                  </div>
+                  <div className="comp-holder">
+                     <span> component 4: </span>
+                     <span className="select-for-add" data-forcomp="comp4" onClick={utils.clickForDrag.bind(utils)}> + </span>
+                     <div id="comp4" data-compname="a-gid"
+                         className="a-grid">
+                        <div className="left" id="comp4-left" data-compname="a-gid-left" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
 
-                           </div>
-                           <div className="left" id="comp4-right" data-compname="a-gid-right" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
+                        </div>
+                        <div className="left" id="comp4-right" data-compname="a-gid-right" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
 
-                           </div>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
             <div className="mid-section" id="board">
-               <div className='the-editor' id="_root" data-compname="_root" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
+               <div className='the-editor' id="_root" data-compname="index" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
 
                </div>
                <div className='selected-one' id='selected-one' >
