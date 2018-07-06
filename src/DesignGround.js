@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import utils from '../www/js/utils.js';
 import Builder from './Builder';
-import SiteTree from './SiteTree'
+import SiteTree from './SiteTree';
+import FolderStructure from './FolderStructure';
 import { Link } from 'react-router-dom';
 class CraftBoard extends Component {
-   super() {
+   constructor(props) {
+       super(props);
 
-   };
+       this.state = {
+         showVDirectory: false
+       }
+  }
    showCompList() {
       var compList = document.querySelector('#comp-list'); // Using a class instead, see note below.
       compList.classList.toggle('show');
@@ -28,6 +33,11 @@ class CraftBoard extends Component {
             console.log(res);
          }
       });
+   };
+   addAssets(assetsToSetFor) {
+      return function() {
+         this.setState({ showVDirectory: true, assetsToSetFor });
+      }
    }
    render() {
       return (
@@ -67,8 +77,10 @@ class CraftBoard extends Component {
                   <div className="comp-holder">
                      <span> component 3: </span>
                      <span className="select-for-add" data-forcomp="comp3" onClick={utils.clickForDrag.bind(utils)}> + </span>
-                     <div id="comp3" data-compname="a-row" className="a-row"
-                        >
+                     <div id="comp3" data-compname="a-row" className="a-row">
+                        <span className="add-assets" onClick={this.addAssets('comp1')}>
+                           +
+                        </span>
                      </div>
                   </div>
                   <div className="comp-holder">
@@ -92,7 +104,10 @@ class CraftBoard extends Component {
                </div>
                <div className='selected-one' id='selected-one' >
                   
-               </div>   
+               </div>
+               <div id="v-directory" className="v-directory">
+                  <FolderStructure />
+               </div>
             </div>
             <div id='comp-json' className="right-section">
                <div className="col-md-12"> 

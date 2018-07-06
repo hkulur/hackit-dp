@@ -40,7 +40,7 @@ class Folder extends Component {
 
     this.state = {
       isOpen: true,
-      isAdding: false,
+      isAdding: false
     }
   }
 
@@ -105,6 +105,7 @@ class FolderStructure extends Component {
       addingValue: 'Select',
       setValueIn: '',
       newValue: '',
+      dataStore: ['user data', 'item data', 'location data'],
     };
   }
 
@@ -184,27 +185,45 @@ class FolderStructure extends Component {
               <div style={{ marginTop: '20px', paddingLeft: '20px'}}>
                 <div className="page-icon">
                   <span className="text">
-                    {dt.name}
+                    {dt.name} page
                   </span>
                   <span className="edit-page-icon" onClick={this.editPage(dt.name)}> 
                     edit
                   </span>
+                  <div id={`data-connect${dt.id}`} className="connector-dot" draggable="true" onDragStart={utils.drag.bind(utils)}>
+                  </div>
+                  <div className="store-connector-line" id={`data-connect${dt.id}-line`} data-pagename={dt.name}>
+                  </div>
                 </div>
               </div>
             );
           }
       });
     }
-  }
-
+  };
+  getDataClaster() {
+    return this.state.dataStore.map((d, i) => {
+      const color = "#"+((1<<24)*Math.random()|0).toString(16);
+      return (
+        <div className="data-claster" id={Math.random()} data-storename={d} onDrop={utils.connectedToDataStore.bind(utils)} data-linepos={`${(i * 20)}`} onDragOver={utils.allowDrop}>
+          <div className="data-connector-color" style={{ left: `${(i * 20 * -1)}px`, top: `${(i * 50 + 10)}px`, backgroundColor: color }}></div>
+          <div className="data-connector-color-v" style={{ left: `${(i * 20 * -1)}px`, width: `${((i+1) * 20)}px`, top: `${(i * 50 + 10)}px`, backgroundColor: color }}></div>
+          {d}
+        </div>
+      );
+    });
+  };
   render() {
-    const { data } = this.state;
+    const { data, dataStore } = this.state;
     console.log(data, 'new');
     return (
       <div className="col-md-12">
         <h1>This is the tree of your site</h1>
-        <div className="col-md-12">
+        <div className="col-md-10">
           {this.getStructure(data)}
+        </div>
+        <div className="col-md-2 data-claster-holder">
+          {this.getDataClaster()}
         </div>
       </div>
     );

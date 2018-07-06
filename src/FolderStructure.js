@@ -183,12 +183,17 @@ class FolderStructure extends Component {
       });
     }
   }
-
+  hideVDir() {
+    document.getElementById('v-directory').classList.toggle('show');
+  };
   render() {
     const { data } = this.state;
     console.log(data, 'new');
     return (
       <div style={{ width: '100%', height: '100%', backgroundColor: 'grey', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
+        <div onClick={this.hideVDir}>
+          X
+        </div>
         <div style={{ width: '500px', height: '100%', backgroundColor: 'white', padding: '40px',}}>
           {this.getStructure(data)}
         </div>
