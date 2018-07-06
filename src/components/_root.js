@@ -11,5 +11,4 @@ class ATest extends Component {
       );
    }
 }
-
 export default ATest;
