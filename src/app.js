@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import CraftBoard from "./CraftBoard";
 import Builder from "./Builder";
+import DesignGround from "./DesignGround";
 import BuilderTest from './BuilderTest';
 class App extends Component {
    render() {
@@ -10,6 +11,7 @@ class App extends Component {
             <Switch>
                <Route path='/builder/' component={Builder} />
                <Route path='/builder-test/' component={BuilderTest} />
+               <Route path='/design-ground/' component={DesignGround} />
                <Route path='/' component={CraftBoard} />
             </Switch>
          </Router>
