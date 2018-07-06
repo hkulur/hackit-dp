@@ -72,14 +72,6 @@ class CraftBoard extends Component {
                            </div>
                         </div>
                      </div>
-                     <div className="comp-holder">
-                        <button onClick={utils.buildTree.bind(utils)}>
-                           Build The tree
-                        </button>
-                        <Link to={'/builder-test/'}>
-                           Preview
-                        </Link>
-                     </div>
                   </div>
                </div>
             </div>
@@ -96,6 +88,9 @@ class CraftBoard extends Component {
                   <button onClick={this.saveTheme}>
                      Save The theme
                   </button>
+                  <Link to={'/builder-test/'}>
+                     Preview
+                  </Link>
                </div>
                <pre>
                   <div id='the-tree-json' className="the-tree-json">
