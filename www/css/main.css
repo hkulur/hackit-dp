@@ -1,3 +1,45 @@
+.left-section {
+  position: absolute;
+  width: 100%;
+  left: -100%;
+  background-color: #aaa;
+  height: 100%;
+  transition-duration: 1s;
+  z-index: 99;
+}
+.left-section.show {
+  left: 0%;
+}
+.right-section {
+  z-index: 99;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  left: 100%;
+  background-color: #aa0;
+  transition-duration: 1s;
+  height: 100%;
+}
+.right-section.show {
+  left: 0%;
+}
+.select-for-add {
+  display: inline-block;
+  background-color: #fff;
+  padding: 5px 10px;
+  border: solid 1px;
+}
+.the-editor {
+  height: calc(100% - 50px);
+  border: solid 1px #aaa;
+  padding: 10px;
+}
+.mid-section {
+  padding: 10px;
+  display: inline-block;
+  width: 100%;
+}
+////////////////////////
 .board {
   padding: 10px;
   height: 100%;
@@ -49,7 +91,7 @@
   left: 100%;
 }
 .go-right {
-  z-index: 99;
+  z-index: 100;
   position: fixed;
   right: 0;
   height: 45px;
@@ -61,7 +103,7 @@
   top: 40%;
 }
 .go-left {
-  z-index: 99;
+  z-index: 100;
   position: fixed;
   left: 0;
   height: 45px;

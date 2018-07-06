@@ -44,7 +44,7 @@ var buildTree = function(node) {
     return null;
 }
 var l  = {
-	_UI_TREE: {rounter: {div3:'', div1: null}},
+	_UI_TREE: {"__root": {}},
 	allowDrop: function(ev) {
 	    ev.preventDefault();
 	},
@@ -53,14 +53,32 @@ var l  = {
 	    pickFrom = ev.target.parentElement.id;
 	    this._UI_TREE = findVal(this._UI_TREE, pickFrom, 'remove', null);
 	},
+    clickForDrag : function(ev) {
+        var idx = ev.currentTarget.dataset.forcomp;
+        var newChild = document.getElementById(idx).cloneNode(true);
+        var selectedOne = document.getElementById('selected-one');
+        newChild.dataset.noclone = 'true';
+        selectedOne.innerHTML = '';
+        newChild.id = Math.random();
+        newChild.addEventListener('dragstart', this.drag, false);
+        newChild.setAttribute('tobecloned', this.drag, false);
+        selectedOne.appendChild(newChild);
+    },
 	drop : function(ev) {
 	    ev.preventDefault();
 	    var data = ev.dataTransfer.getData("text");
 	    dropTo = ev.target.id;
 	    this._UI_TREE = findVal(this._UI_TREE, dropTo, 'set', data);
 	    console.log(this._UI_TREE);
-	   	const newChild = document.getElementById(data).cloneNode(true);
+	   	const originalChild = document.getElementById(data);
+        var newChild = {};
+        if (originalChild.dataset.noclone === 'true') {
+            newChild = originalChild;
+        } else {
+            newChild = originalChild.cloneNode(true);
+        }
 	   	newChild.id = Math.random();
+        newChild.dataset.noclone = 'true';
         newChild.addEventListener('dragstart', this.drag, false);
         newChild.setAttribute('tobecloned', this.drag, false);
 	    ev.target.appendChild(newChild);
