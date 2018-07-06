@@ -46,7 +46,7 @@ class CraftBoard extends Component {
                      </div>
                      <div className="comp-holder">
                         <span> component 2: </span>
-                        <span className="select-for-add"> + </span>
+                        <span className="select-for-add" data-forcomp="comp2" onClick={utils.clickForDrag.bind(utils)}> + </span>
                         <div id="comp2" data-compname="a-2nd-test-comp" className="a-test-component"
                            >
                            Another TEST COMPONENT
@@ -54,14 +54,14 @@ class CraftBoard extends Component {
                      </div>
                      <div className="comp-holder">
                         <span> component 3: </span>
-                        <span className="select-for-add"> + </span>
+                        <span className="select-for-add" data-forcomp="comp3" onClick={utils.clickForDrag.bind(utils)}> + </span>
                         <div id="comp3" data-compname="a-row" className="a-row"
                            >
                         </div>
                      </div>
                      <div className="comp-holder">
                         <span> component 4: </span>
-                        <span className="select-for-add"> + </span>
+                        <span className="select-for-add" data-forcomp="comp4" onClick={utils.clickForDrag.bind(utils)}> + </span>
                         <div id="comp4" data-compname="a-gid"
                             className="a-grid">
                            <div className="left" id="comp4-left" data-compname="a-gid-left" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
