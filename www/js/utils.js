@@ -51,7 +51,7 @@ var buildTree = function(node) {
 }
 var l  = {
 	_UI_TREE: {
-        "index": {
+        "index-page": {
             'meta_data':{
                 'title': 'A default Index Page'
             }

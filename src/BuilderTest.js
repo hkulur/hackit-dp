@@ -6,8 +6,9 @@ class BuilderTest extends Component {
 		console.log(window.tree);
 	};
 	buildThePage(){
-		const TREE = [JSON.parse(JSON.stringify(window.tree))];
-		const theTree = this.getTheComp(TREE[0],'');
+		const TREE = window.tree.json_data;
+		console.log(TREE['index-page']);
+		const theTree = this.getTheComp(TREE['index-page'],'');
 		return theTree;
 	};
 	getTheComp(node, pName){
@@ -21,8 +22,8 @@ class BuilderTest extends Component {
 			}
 		}
 		var Ele=AllComponents[node.component];
-		node.data['uid'] = node.component + '_' + pName;
-		return <Ele data={{...node.data}} key={node.data['uid']}>{child}</Ele>;
+		//node.data['uid'] = node.component + '_' + pName;
+		return <Ele data={{...node.data}} key={Math.random()}>{child}</Ele>;
 	};
 	render() {
 		return (this.buildThePage());

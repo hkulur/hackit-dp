@@ -24,6 +24,16 @@ class CraftBoard extends Component {
       var compList = document.querySelector('#site-tree'); // Using a class instead, see note below.
       compList.classList.toggle('show');
    };
+   componentWillMount() {
+      $.ajax({
+         url: "http://192.168.3.92:8000/theme/get_theme/",
+         method: "POST",
+         data: JSON.stringify({name: "GALE", json_data: window.tree, site_thumb: JSON.stringify(window.treeThumb) }),
+         success: function(res){
+            console.log(res);
+         }
+      });
+   }
    saveTheme() {
       $.ajax({
          url: "http://192.168.3.92:8000/theme/save-theme/",
@@ -69,7 +79,7 @@ class CraftBoard extends Component {
                   <div className="comp-holder">
                      <span> component 2: </span>
                      <span className="select-for-add" data-forcomp="comp2" onClick={utils.clickForDrag.bind(utils)}> + </span>
-                     <div id="comp2" data-compname="a-2nd-test-comp" className="a-test-component"
+                     <div id="comp2" data-compname="a-2nd-test-comp" className="col-md-12 a-test-component"
                         >
                         Another TEST COMPONENT
                      </div>
@@ -99,7 +109,7 @@ class CraftBoard extends Component {
                </div>
             </div>
             <div className="mid-section" id="board">
-               <div className='the-editor' id="_root" data-compname="index" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
+               <div className='the-editor' id="_root" data-compname="index-page" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
 
                </div>
                <div className='selected-one' id='selected-one' >

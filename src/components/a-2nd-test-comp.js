@@ -8,7 +8,7 @@ class ATest extends Component {
    }
    render() {
    	return (
-         <div className="col-md-12">
+         <div className="col-md-12 a-test-component">
             A Second Component
          </div>
       );

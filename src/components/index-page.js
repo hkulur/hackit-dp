@@ -4,12 +4,12 @@ class ATest extends Component {
 
    };
    componentWillMount() {
-    console.log('a-row');
+    console.log(this.props);
    }
    render() {
-    return (
+   	return (
          <div className="col-md-12">
-            THIS is a static ROW
+            {this.props.children}
          </div>
       );
    }
