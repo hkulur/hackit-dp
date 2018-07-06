@@ -1,0 +1,303 @@
+@media only screen and (max-width: 768px) {
+  .site-name {
+    padding-top: 200px;
+  }
+  .hamburger {
+    background-color: #fff;
+  }
+  .site-name .t1 {
+    font-size: 32px;
+  }
+  .site-name .quote {
+    font-size: 12px;
+    max-width: 60%;
+  }
+  .field-val-explain {
+    font-size: 8px;
+  }
+  .gap-xl {
+    margin-bottom: 10px;
+  }
+  .user-name-on-title-bar {
+    display: none;
+  }
+  .user-name-and-image {
+    width: calc(100% - 70px);
+  }
+  .profile-photo-on-register
+  {
+    padding-left: 0;
+  }
+  .exc-level {
+    width: 60px;
+  }
+  .container {
+    max-width: 100%;
+    margin: 0;
+    width: 100%;
+  }
+  .time_line_user_title_bar {
+    display: none;
+  }
+  .quality-bedge
+  {
+    font-size: 8px;
+  }
+  .badge-img {
+    width: 15px;
+    height: 15px;
+  }
+  .mobile-menu {
+    width: 90%;
+    background-color: #fff;
+    left: 0;
+    top: 0;
+    position: relative;
+    height: 100%;
+  }
+  .moto-holder {
+    margin-top: 20px;
+  }
+  .registration-success-modal {
+    width: 90%;
+    padding: 15px;
+  }
+  .desktop-only {
+    display: none;
+  }
+  .mobile-color {
+    color: #308090 !important;
+    font-size: 50px !important;
+  }
+  .mobile-only {
+    display: block;
+    text-align: center;
+  }
+  .glyphicon-menu-hamburger {
+    vertical-align: middle;
+  }
+  .no-padding-mobile {
+    padding: 0;
+  }
+  .processing-tnt {
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+  }
+  .upload-image-holder {
+    width: calc(100% - 30px);
+    padding: 0;
+    max-height: 300px;
+    height: auto;
+  }
+  .uploaded-image-show-modal {
+    padding: 0;
+
+  }
+  .image-upload-viewer {
+    font-size: 1em;
+  }
+	.commentator-name
+	{
+    font-size: 10px;
+	}
+  .post-cards
+  {
+    padding: 0;
+    background-color: #eee;
+  }
+  .a-comment {
+    line-height: 18px;
+  }
+	.a-comment .prof-img
+	{
+		height:20px;
+		width:20px; 
+	}
+	.react-good, .react-poor
+	{
+		font-size:10px;
+	}
+	.comment-post-button-mobile
+	{
+		padding: 4px;
+    border: solid 1px #aaa;
+    position: absolute;
+    right: 8px;
+    display: block;
+    font-size: 8px;
+    border-radius: 3px;
+    background-color: #efefef;
+    line-height: 10px;
+    top: 12px;
+    height: 22px;
+	}
+  .ytp-icon.ytp-icon-watermark
+  {
+    display: none;
+  }
+  .content-title
+  {
+    font-size: 18px;
+  }
+  .t1
+  {
+    font-size: 25px;
+    padding: 0px;
+    display: inline-flex;
+    color:#fff;
+    padding: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .mini-text
+  {
+    font-size: 12px;
+  }
+  .micro-text
+  {
+    font-size: 10px;
+    padding-left:10px;
+  }
+  .content-holder .text-content
+  {
+    padding: 10px;
+  }
+  .video-content
+  {
+    height: 260px;
+    position: relative;
+  }
+  .image-content
+  {
+    width: 100%;
+    border-left: solid 1px #ddd;
+    border-right: solid 1px #ddd;
+  }
+  .ttle
+  {
+    margin: 0px;
+    position: fixed;
+    width: 100%;
+    padding-left: -15px!important;
+    padding-right: -15px;
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+    background-color: rgba(48, 128, 144, 1);
+  }
+  .post-holder
+  {
+    margin-top: 0;
+  }
+  .share-form-holder
+  {
+    padding:0px;
+  }
+  .share-form, .log-in-form
+  {
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 10px;
+  }
+  .inp-field
+  {
+    border: solid 1px #eee;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 12px;
+  }
+  .upload-photo-video
+  {
+    
+  }
+  .moto-slot-text
+  {
+	  padding-top:10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  .moto-logo {
+    transform: translate(0, -50%);
+    position: absolute;
+    width: auto;
+    top: 50%;
+  }
+  .xxl-txt {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .main-img-moto {
+    width:100%;
+    margin: auto;
+    padding: 0 20%;
+  }
+  .auth-form 
+  {
+  	  position: relative;
+	    background-color: #fff;
+	    border-bottom: solid 1px #aaa;
+  }
+  .search-icon
+  {
+  	right: 22px;
+    top: 12px;
+  }
+	.btn
+	{
+		font-size:12px;
+	}
+	body
+	{
+		font-size: 14px;
+	}
+	.mobile-menu-holder
+	{
+		height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+    top: 0px;
+    color: #777;
+    border:solid 1px #aaa;
+    left:-100%;
+    background: rgba(0,0,0,0.5);
+    font-family: 'Roboto', sans-serif;
+    padding-left:0px;
+
+	}
+	.menu-head
+	{
+		background-color: #4A96AD;
+    height: 49px;
+    width: 100%;
+    position: relative;
+    color: #fff;
+    padding: 12px 25px;
+	}
+	.mobile-menu-row
+	{
+		font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+    margin-bottom: 2px;
+    font-size: 15px;
+    padding: 10px 25px;
+    color:#777;
+	}
+	.profile-of
+	{
+		font-size: 14px;
+    line-height: 20px;
+    padding: 15px;
+	}
+  .write-a-comment
+  {
+    padding-right: 35px;
+    line-height: 15px;
+  }
+}

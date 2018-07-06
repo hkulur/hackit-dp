@@ -1,0 +1,19 @@
+const ka = function getNodeTree (node) {
+    if (node.hasChildNodes()) {
+        var children = [];
+        for (var j = 0; j < node.childNodes.length; j++) {
+            children.push(getNodeTree(node.childNodes[j]));
+        }
+
+        return {
+            nodeName: (node.dataset || node.dataset.compname),
+            parentName: node.parentNode.nodeName,
+            children: children,
+        };
+    }
+
+    return {
+            nodeName: (node.dataset || node.dataset.compname),
+            parentName: node.parentNode.nodeName,
+    };
+}

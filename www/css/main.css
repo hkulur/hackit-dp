@@ -1,0 +1,94 @@
+.board {
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border: solid;
+}
+.comp-list{
+  border: solid;
+  min-height: 100px;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 15px;
+}
+.a-test-component {
+  background-color: #aa0;
+  padding: 15px;
+  font-size: 20px;
+}
+.a-test-component-II {
+  background-color: #0aa;
+  padding: 15px;
+  font-size: 20px;
+}
+.a-grid {
+  height: 200px;
+  width: 100%;
+  border: solid 1px;
+  padding: 0;
+}
+.a-row {
+  min-height: 100px;
+  width: 100%;
+  border: solid 1px;
+}
+.the-plate {
+  position: relative;
+  width: 300%;
+  display: inline-block;
+}
+.the-tree-json {
+  height: 100%;
+}
+.goLeft {
+  left: -100%;
+}
+.goRight {
+  left: 100%;
+}
+.go-right {
+  z-index: 99;
+  position: fixed;
+  right: 0;
+  height: 45px;
+  width: 45px;
+  background-color: #0ff;
+  padding: 10px;
+  border: solid 1px;
+  border-radius: 50%;
+  top: 40%;
+}
+.go-left {
+  z-index: 99;
+  position: fixed;
+  left: 0;
+  height: 45px;
+  width: 45px;
+  background-color: #0ff;
+  padding: 10px;
+  border: solid 1px;
+  border-radius: 50%;
+  top: 40%;
+}
+.a-grid .left,
+.a-grid .left {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  height: 100px;
+  border: solid 1px;
+  padding: 0;
+}
+
+.comp-holder {
+  margin: 10px 0;
+}
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
