@@ -6,8 +6,7 @@ class BuilderTest extends Component {
 		console.log(window.tree);
 	};
 	buildThePage(){
-		console.log('yoo',window.tree);
-		const TREE = [JSON.parse(`{"component":"_root","child":[{"component":"a-gid","child":[{"component":"a-gid-left","child":[{"component":"a-test-comp","child":[null],"data":{}}],"data":{}},{"component":"a-gid-right","child":[{"component":"a-2nd-test-comp","child":[null],"data":{}}],"data":{}}],"data":{}}],"data":{}}`)];
+		const TREE = [JSON.parse(JSON.stringify(window.tree))];
 		const theTree = this.getTheComp(TREE[0],'');
 		return theTree;
 	};
@@ -16,14 +15,14 @@ class BuilderTest extends Component {
 		const child = [];
 		if (node && node.child) {
 			for(var i=0;i<node.child.length;i++) {
-				const k = this.getTheComp(node.child[0], node.component + '_' + pName);
+				const k = this.getTheComp(node.child[i], node.component + '_' + pName + i);
 				if(k)
 				child.push(k);
 			}
 		}
 		var Ele=AllComponents[node.component];
 		node.data['uid'] = node.component + '_' + pName;
-		return <Ele data={{...node.data}}>{child}</Ele>;
+		return <Ele data={{...node.data}} key={node.data['uid']}>{child}</Ele>;
 	};
 	render() {
 		return (this.buildThePage());
