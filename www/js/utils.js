@@ -62,6 +62,7 @@ var l  = {
         newChild.id = Math.random();
         newChild.addEventListener('dragstart', this.drag, false);
         newChild.setAttribute('tobecloned', this.drag, false);
+        newChild.setAttribute('draggable', 'true');
         selectedOne.appendChild(newChild);
     },
 	drop : function(ev) {

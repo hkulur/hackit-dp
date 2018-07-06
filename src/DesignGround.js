@@ -35,35 +35,35 @@ class CraftBoard extends Component {
             </div>
             <div id='comp-list' className="left-section">
                <div className="col-md-12">
-                  <div id="div3" className="col-md-12 comp-list" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
+                  <div id="div3" className="col-md-12 comp-list">
                      <div className="comp-holder">
                         <span> component 1: </span>
                         <span className="select-for-add" data-forcomp="comp1" onClick={utils.clickForDrag.bind(utils)}> + </span>
-                        <div id="comp1" data-compname="a-test-comp" className="a-test-component" draggable="true"
-                           onDragStart={utils.drag.bind(utils)}>
+                        <div id="comp1" data-compname="a-test-comp" className="a-test-component"
+                           >
                            A TEST COMPONENT
                         </div>
                      </div>
                      <div className="comp-holder">
                         <span> component 2: </span>
                         <span className="select-for-add"> + </span>
-                        <div id="comp2" data-compname="a-2nd-test-comp" className="a-test-component" draggable="true"
-                           onDragStart={utils.drag.bind(utils)}>
+                        <div id="comp2" data-compname="a-2nd-test-comp" className="a-test-component"
+                           >
                            Another TEST COMPONENT
                         </div>
                      </div>
                      <div className="comp-holder">
                         <span> component 3: </span>
                         <span className="select-for-add"> + </span>
-                        <div id="comp3" data-compname="a-row" className="a-row" draggable="true"
-                           onDragStart={utils.drag.bind(utils)}>
+                        <div id="comp3" data-compname="a-row" className="a-row"
+                           >
                         </div>
                      </div>
                      <div className="comp-holder">
                         <span> component 4: </span>
                         <span className="select-for-add"> + </span>
-                        <div id="comp4" data-compname="a-gid" draggable="true"
-                           onDragStart={utils.drag.bind(utils)} className="a-grid">
+                        <div id="comp4" data-compname="a-gid"
+                            className="a-grid">
                            <div className="left" id="comp4-left" data-compname="a-gid-left" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
 
                            </div>
