@@ -49,6 +49,10 @@ class CraftBoard extends Component {
          this.setState({ showVDirectory: true, assetsToSetFor });
       }
    }
+   switchToMobile () {
+      const board = document.getElementById('board');
+      board.classList.toggle('mobile');
+   }
    render() {
       return (
          <div className="the-container">
@@ -61,6 +65,9 @@ class CraftBoard extends Component {
             <div className="col-md-12 button-list">
                <button onClick={utils.buildTree.bind(utils)}>
                   Build The tree
+               </button>
+               <button onClick={this.switchToMobile}>
+                  switch to mobile view
                </button>
             </div>
             <div id='site-tree' className="col-md-12 site-tree">

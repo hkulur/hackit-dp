@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import map from 'lodash/map';
+import utils from '../www/js/utils.js';
 // import from './styles.css';
 
 
@@ -8,26 +9,8 @@ const folderData ={
     {
       id: 1,
       type: 'folder',
-      name: 'base',
+      name: '__root',
       child: [
-        {
-          id: 11,
-          type: 'folder',
-          name: 'child1',
-          child: []
-        },
-        {
-          id: 12, 
-          type: 'folder',
-          name: 'child2',
-          child: [
-            {
-              id: 123,
-              type: 'file',
-              name: 'file1',
-            }
-          ]
-        }
       ],
     }
   ]
@@ -38,8 +21,8 @@ class Folder extends Component {
     super(props);
 
     this.state = {
-      isOpen: false,
-      isAdding: false,
+      isOpen: true,
+      isAdding: false
     }
   }
 
@@ -59,9 +42,9 @@ class Folder extends Component {
         <button onClick={() => { this.toggle(); }}>{isOpen ? 'Close' : 'Open'}</button>
         <button onClick={() => { this.addNew(); }}>+</button>
         {isAdding && 
-          <select value={addingValue} onChange={(e) => { setValue(e.target.value, id); this.setState({ isOpen: true, }); }}>
-            <option value="file">File</option>
-            <option value="folder">Folder</option>
+          <select value={addingValue} onChange={(e) => { setValue(e.target.value, id); this.setState({ isOpen: true }); }}>
+            <option value="file">Add a page</option>
+            <option value="folder">Add a branch(Group of many page)</option>
           </select>
         }
         {isOpen && 
@@ -70,7 +53,7 @@ class Folder extends Component {
             {addingValue !== '' && setValueIn === id && 
               <div>
                 <input type='text' value={newValue} onChange={(e) => { addNewName(e.target.value); }} placeholder={`Enter ${addingValue} name`} />
-                <button onClick={() => { onAddClick(); this.setState({ isOpen: false, }); }}>Add</button>
+                <button onClick={() => { onAddClick(); this.setState({ isOpen: true }); }}>Add</button>
               </div>
             }
           </div>
@@ -104,6 +87,7 @@ class FolderStructure extends Component {
       addingValue: 'Select',
       setValueIn: '',
       newValue: '',
+      dataStore: ['userData', 'itemData', 'locationData'],
     };
   }
 
@@ -114,10 +98,15 @@ class FolderStructure extends Component {
   addNewName(val) {
     this.setState({ newValue: val });
   }
+  editPage(pageName) {
+    return function() {
+      utils.addAPage(pageName);
+    }
+  }
 
   trace(data, lookingFor) {
     const { newValue, addingValue, setValueIn } = this.state;
-    // debugger;
+    if(!data) return null;
     for(var i = 0; i < data.length; i++)
     {
       const dt = data[i];
@@ -176,26 +165,48 @@ class FolderStructure extends Component {
           } else {
             return (
               <div style={{ marginTop: '20px', paddingLeft: '20px'}}>
-                <File key={dt.id} name={dt.name} id={dt.id} />
+                <div className="page-icon">
+                  <span className="text">
+                    {dt.name} page
+                  </span>
+                  <span className="edit-page-icon" onClick={this.editPage(dt.name)}> 
+                    edit
+                  </span>
+                  <div id={`data-connect${dt.id}`} className="connector-dot" draggable="true" onDragStart={utils.drag.bind(utils)}>
+                  </div>
+                  <div className="store-connector-line" id={`data-connect${dt.id}-line`} data-pagename={dt.name}>
+                  </div>
+                </div>
               </div>
             );
           }
       });
     }
-  }
-  hideVDir() {
-    document.getElementById('v-directory').classList.toggle('show');
+  };
+  getDataClaster() {
+    return this.state.dataStore.map((d, i) => {
+      const color = "#"+((1<<24)*Math.random()|0).toString(16);
+      return (
+        <div className="data-claster" id={Math.random()} data-storename={d} onDrop={utils.connectedToDataStore.bind(utils)} data-linepos={`${(i * 20)}`} onDragOver={utils.allowDrop}>
+          <div className="data-connector-color" style={{ left: `${(i * 20 * -1)}px`, top: `${(i * 50 + 10)}px`, backgroundColor: color }}></div>
+          <div className="data-connector-color-v" style={{ left: `${(i * 20 * -1)}px`, width: `${((i+1) * 20)}px`, top: `${(i * 50 + 10)}px`, backgroundColor: color }}></div>
+          {d}
+        </div>
+      );
+    });
   };
   render() {
-    const { data } = this.state;
+    const { data, dataStore } = this.state;
     console.log(data, 'new');
     return (
-      <div style={{ width: '100%', height: '100%', backgroundColor: 'grey', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
-        <div onClick={this.hideVDir}>
-          X
-        </div>
-        <div style={{ width: '500px', height: '100%', backgroundColor: 'white', padding: '40px',}}>
+      <div className="col-md-12 v-dir">
+        <h1>Assets Directory</h1>
+        <span className="close-icon"><h1>X</h1></span>
+        <div className="col-md-10">
           {this.getStructure(data)}
+        </div>
+        <div className="col-md-2 data-claster-holder">
+          {this.getDataClaster()}
         </div>
       </div>
     );
