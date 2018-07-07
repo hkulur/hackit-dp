@@ -50,7 +50,7 @@ class BuilderTest extends Component {
 		    });
 
    		}
-   		
+
    };
 	getTheComp(node, pName, pageStore){
 		if(!node) return null;
@@ -63,7 +63,12 @@ class BuilderTest extends Component {
 			}
 		}
 		var Ele=AllComponents[node.component];
-		return <Ele pageStore={pageStore} data={{...node.data}} key={Math.random()}>{child}</Ele>;
+		if (Ele) {
+			return <Ele pageStore={pageStore} data={{...node.data}} key={Math.random()}>{child}</Ele>;
+		} else {
+			var Element = AllComponents['a-row'];
+			return <Element pageStore={pageStore} data={{...node.data}} key={Math.random()}>{child}</Element>;
+		}
 	};
 	render() {
 		return (

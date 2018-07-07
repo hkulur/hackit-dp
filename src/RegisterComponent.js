@@ -10,6 +10,7 @@ class RegisterComponent extends Component {
          component: '',
          title: ''
       }
+      this.registerComp = this.registerComp.bind(this);
    };
 
    searchComp() {
@@ -27,16 +28,17 @@ class RegisterComponent extends Component {
    registerComp() {
       const compToRegister = (document.getElementById('test-id'));
       const { component, title } = this.state;
-      const data = {
-         name: component,
-         title,
-         content: compToRegister,
+      const data1 = {
+         "name": JSON.stringify(component) || '',
+         "title": title || '',
+         "content": compToRegister || '',
       }
       $.ajax({
-         url: "http://192.168.3.92:8080/set_thumbnail",
+         url: "http://192.168.3.92:8000/theme/set_thumbnail/",
          method: "POST",
-         success: function(data){
-            console.log(data);
+         data: data1,
+         success: function(res){
+            console.log(res);
          }
       });
    }
@@ -50,7 +52,7 @@ class RegisterComponent extends Component {
             <button onClick={() => { this.searchComp(); }}>Search Component</button>
             <br />
             <div id={'test-id'}></div>
-            {this.state.showRegisterButton && <button onClick={() => { this.registerComp(); }}>Register</button>}
+            <button onClick={this.registerComp}>Register</button>
          </div>
       );
    }
