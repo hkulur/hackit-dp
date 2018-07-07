@@ -26,12 +26,13 @@ class RegisterComponent extends Component {
    }
 
    registerComp() {
+      debugger
       const compToRegister = (document.getElementById('test-id'));
       const { component, title } = this.state;
       const data1 = {
-         "name": JSON.stringify(component) || '',
+         "name": component || '',
          "title": title || '',
-         "content": compToRegister || '',
+         "content": compToRegister.outerHTML || '',
       }
       $.ajax({
          url: "http://192.168.3.92:8000/theme/set_thumbnail/",
@@ -47,10 +48,10 @@ class RegisterComponent extends Component {
       return (
          <div className="register-component">
             <div>Enter the Component to register</div>
-            <input type="text" id={'register-component-name'} placeholder={'Enter Component Name'}></input>
-            <input type="text" id={'register-component-title'} placeholder={'Enter Thumbnail Title'}></input>
-            <button onClick={() => { this.searchComp(); }}>Search Component</button>
-            <br />
+               <input type="text" id={'register-component-name'} placeholder={'Enter Component Name'}></input>
+               <input type="text" id={'register-component-title'} placeholder={'Enter Thumbnail Title'}></input>
+               <button onClick={() => { this.searchComp(); }}>Search Component</button>
+               <br />
             <div id={'test-id'}></div>
             <button onClick={this.registerComp}>Register</button>
          </div>
