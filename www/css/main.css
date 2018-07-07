@@ -23,7 +23,7 @@ body {
   padding: 5px;
   text-align: center;
   margin: 5px;
-  min-width: 120px;
+  min-width: 140px;
 }
 .site-tree-button {
   position: absolute;
@@ -34,7 +34,7 @@ body {
 }
 .button-list {
   display: inline-block;
-  width: 85% !important;
+  width: 86% !important;
   float: right !important;
   padding-right: 5px;
 }
@@ -94,11 +94,13 @@ body {
   z-index: 99;
 }
 .data-claster {
-  padding: 10px;
+  padding: 5px;
+  margin-left: 5px;
   border: solid 2px #fff;
   border-radius: 7px;
   width: 100%;
   margin-bottom: 10px;
+  border-color: #aaa;
 }
 .connector-dot {
   height: 10px;
@@ -147,8 +149,13 @@ body {
 .select-for-add {
   display: inline-block;
   background-color: #fff;
-  padding: 5px 10px;
+  padding: 1px 7px;
   border: solid 1px;
+  border-radius: 16px;
+  text-align: center;
+  color: #fff;
+  background-color: #00bcaa;
+  margin-bottom: 10px !important;
 }
 .the-editor {
   height: calc(100% - 50px);
@@ -157,12 +164,24 @@ body {
 }
 .site-tree-btn {
   margin-left: 18px;
-  margin: 6px 18px 3px 18px;
+  margin: 6px 6px 3px 18px;
   border-radius: 20px;
   display: inline-block;
   width: 150px;
   background-color: #050d9e;
   color: #fff;
+}
+.asset-mgmt-btn {
+  margin-left: 18px;
+  margin: 6px 18px 3px 18px;
+  border-radius: 20px;
+  display: inline-block;
+  width: 150px;
+  background-color: #ff661b;
+  color: #fff;
+}
+.site-tree {
+  background-color: #ccc;
 }
 .toggle-view-btn {
   float: right;
@@ -198,6 +217,7 @@ body {
 .data-claster-holder {
   height: 100%;
   display: inline-block;
+  border-color: #aaa;
 }
 .the-folder-tree {
   top: 0;
@@ -229,9 +249,13 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 15px;
+  margin: auto;
+  float: unset !important;
+  background-color: #fff;
+  border-color: transparent;
 }
 .a-test-component {
-  background-color: #aa0;
+  background-color: #e5e5e5;
   padding: 15px;
   font-size: 20px;
 }

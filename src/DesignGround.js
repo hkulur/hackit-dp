@@ -65,14 +65,14 @@ class CraftBoard extends Component {
                Site Tree
             </div>
             <div className="col-md-12 button-list">
+               <button className="add-assets common-btn asset-mgmt-btn" onClick={this.addAssets}>
+                  Asset management
+               </button>
                <button  className={'common-btn build-tree-btn'} onClick={utils.buildTree.bind(utils)}>
                   Build Tree
                </button>
                <button className={'common-btn toggle-view-btn'} onClick={this.switchToMobile}>
                   Toggle View
-               </button>
-               <button className="add-assets" onClick={this.addAssets}>
-                  Asset management
                </button>
             </div>
             <div className="go-left" onClick={this.showCompList}>

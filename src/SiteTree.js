@@ -18,7 +18,7 @@ const folderData ={
           child: []
         },
         {
-          id: Math.random(), 
+          id: Math.random(),
           type: 'folder',
           name: 'ABOUT US',
           child: [
@@ -56,19 +56,19 @@ class Folder extends Component {
     const { name, id, children, addingValue, setValue, setValueIn, newValue, addNewName, onAddClick } = this.props;
     const { isOpen, isAdding } = this.state;
     return (
-      <div>{name}: 
+      <div>{name}:
         <button onClick={() => { this.toggle(); }}>{isOpen ? 'Close' : 'Open'}</button>
         <button onClick={() => { this.addNew(); }}>+</button>
-        {isAdding && 
+        {isAdding &&
           <select value={addingValue} onChange={(e) => { setValue(e.target.value, id); this.setState({ isOpen: true }); }}>
             <option value="file">Add a page</option>
             <option value="folder">Add a branch(Group of many page)</option>
           </select>
         }
-        {isOpen && 
+        {isOpen &&
           <div>
             {children}
-            {addingValue !== '' && setValueIn === id && 
+            {addingValue !== '' && setValueIn === id &&
               <div>
                 <input type='text' value={newValue} onChange={(e) => { addNewName(e.target.value); }} placeholder={`Enter ${addingValue} name`} />
                 <button onClick={() => { onAddClick(); this.setState({ isOpen: true }); }}>Add</button>
@@ -133,12 +133,12 @@ class FolderStructure extends Component {
         console.log('HIT');
         if (addingValue === 'folder') {
           data[i].child.push({ id: Math.random(), name: newValue, type: addingValue, child: [] });
-          // data[kys[i]].child = {...data[kys[i]].child, newValue: { id: 1234, name: newValue, type: addingValue, child: [] }}; 
+          // data[kys[i]].child = {...data[kys[i]].child, newValue: { id: 1234, name: newValue, type: addingValue, child: [] }};
         } else {
           data[i].child.push({ id: Math.random(), name: newValue, type: addingValue });
-          // data[kys[i]].child = {...data[kys[i]].child, newValue: { id: 1234, name: newValue, type: addingValue }}; 
+          // data[kys[i]].child = {...data[kys[i]].child, newValue: { id: 1234, name: newValue, type: addingValue }};
         }
-        
+
         return data;
       } else {
         data[i].child = this.trace(data[i].child,lookingFor);
@@ -153,7 +153,7 @@ class FolderStructure extends Component {
     const ka = this.trace(JSON.parse(JSON.stringify(data.child)), this.state.setValueIn);
     data.child = ka;
     this.setState({ data, addingValue: '' });
-    
+
   }
 
   getStructure(data) {
@@ -187,7 +187,7 @@ class FolderStructure extends Component {
                   <span className="text">
                     {dt.name} page
                   </span>
-                  <span className="edit-page-icon" onClick={this.editPage(dt.name)}> 
+                  <span className="edit-page-icon" onClick={this.editPage(dt.name)}>
                     edit
                   </span>
                   <div id={`data-connect${dt.id}`} className="connector-dot" draggable="true" onDragStart={utils.drag.bind(utils)}>
@@ -218,7 +218,7 @@ class FolderStructure extends Component {
     console.log(data, 'new');
     return (
       <div className="col-md-12">
-        <h1>This is the tree of your site</h1>
+        <h1>Tree structure of the site</h1>
         <div className="col-md-10">
           {this.getStructure(data)}
         </div>
