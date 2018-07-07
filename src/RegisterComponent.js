@@ -27,6 +27,7 @@ class RegisterComponent extends Component {
 
    registerComp() {
       const compToRegister = (document.getElementById('test-id'));
+      document.getElementById('raw').innerHTML = "`"+compToRegister.innerHTML+"`";
       const { component, title } = this.state;
       const data1 = {
          "name": JSON.stringify(component) || '',
@@ -52,6 +53,11 @@ class RegisterComponent extends Component {
             <button onClick={() => { this.searchComp(); }}>Search Component</button>
             <br />
             <div id={'test-id'}></div>
+            <code>
+            <div id='raw'>
+
+            </div>
+            </code>
             <button onClick={this.registerComp}>Register</button>
          </div>
       );

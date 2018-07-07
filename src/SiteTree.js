@@ -56,15 +56,17 @@ class Folder extends Component {
     const { name, id, children, addingValue, setValue, setValueIn, newValue, addNewName, onAddClick } = this.props;
     const { isOpen, isAdding } = this.state;
     return (
-      <div>{name}:
-        <button onClick={() => { this.toggle(); }}>{isOpen ? 'Close' : 'Open'}</button>
-        <button onClick={() => { this.addNew(); }}>+</button>
-        {isAdding &&
-          <select value={addingValue} onChange={(e) => { setValue(e.target.value, id); this.setState({ isOpen: true }); }}>
-            <option value="file">Add a page</option>
-            <option value="folder">Add a branch(Group of many page)</option>
-          </select>
-        }
+      <div>
+        <div className="dropdown">
+          <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{name}
+          <span className="caret"></span></button>
+          <ul className="dropdown-menu">
+            <li onClick={() => { this.addNew(); }}>Add new Sub items</li>
+            <li onClick={() => { this.toggle(); }}>Expand</li>
+            <li onClick={(e) => { setValue('file', id); this.setState({ isOpen: true });}}>Add Page</li>
+            <li onClick={(e) => { setValue('folder', id); this.setState({ isOpen: true }); }}>Add Branch</li>
+          </ul>
+        </div>
         {isOpen &&
           <div>
             {children}
@@ -117,11 +119,16 @@ class FolderStructure extends Component {
     this.setState({ newValue: val });
   }
   editPage(pageName) {
-    return function() {
       utils.addAPage(pageName);
-    }
   }
+  onAddClick() {
+    let data = this.state.data;
+    let mapped = '';
+    const ka = this.trace(JSON.parse(JSON.stringify(data.child)), this.state.setValueIn);
+    data.child = ka;
+    this.setState({ data, addingValue: '' });
 
+  }
   trace(data, lookingFor) {
     const { newValue, addingValue, setValueIn } = this.state;
     if(!data) return null;
@@ -155,7 +162,24 @@ class FolderStructure extends Component {
     this.setState({ data, addingValue: '' });
 
   }
+  deleteRecur(data, lookingFor) {
+    if(data.id == lookingFor)
+    {
+      return 'delete';
+    }
+    for(var i=0;i<(data.child && data.child.length);i++){
+      const v=this.deleteRecur(data.child[i], lookingFor);
+      if(v=='delete')
+      data.child.splice(i, 1);
 
+    }
+    return data;
+  }
+  deleteStructure(lookingFor) {
+    let d = this.state.data;
+    d = this.deleteRecur(d, lookingFor);
+    this.setState({ data: d });
+  }
   getStructure(data) {
     const { addingValue, setValueIn, newValue } = this.state;
     if (data && data.child) {
@@ -164,7 +188,7 @@ class FolderStructure extends Component {
           console.log(dt);
           if (dt.type === 'folder') {
             return (
-              <div style={{ marginTop: '20px', paddingLeft: '20px'}}>
+              <div style={{ marginTop: '5px', paddingLeft: '100px'}}>
                 <Folder
                   key={dt.id}
                   name={dt.name}
@@ -182,19 +206,19 @@ class FolderStructure extends Component {
             );
           } else {
             return (
-              <div style={{ marginTop: '20px', paddingLeft: '100px'}}>
-                <div className="page-icon">
-                  <span className="text">
-                    {dt.name} page
-                  </span>
-                  <span className="edit-page-icon" onClick={this.editPage(dt.name)}>
-                    edit
-                  </span>
+              <div style={{ marginTop: '5px', paddingLeft: '100px'}}>
+                <div className="dropdown">
+                    <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{dt.name}(page)
+                    <span className="caret"></span></button>
+                    <ul className="dropdown-menu">
+                      <li onClick={() => this.editPage(dt.name)}>Edit</li>
+                      <li onClick={() => this.deleteStructure(dt.id)}>Delete</li>
+                    </ul>
+                  </div>
                   <div id={`data-connect${dt.id}`} className="connector-dot" draggable="true" onDragStart={utils.drag.bind(utils)}>
                   </div>
                   <div className="store-connector-line" id={`data-connect${dt.id}-line`} data-pagename={dt.name}>
                   </div>
-                </div>
               </div>
             );
           }

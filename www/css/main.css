@@ -307,6 +307,12 @@ body {
   border: solid 1px;
   float: right;
 }
+.btn.btn-default.dropdown-toggle {
+  width: 150px !important;
+}
+.dropdown-menu {
+  padding-left: 10px !important;
+}
 .go-left {
   z-index: 100;
   position: fixed;
