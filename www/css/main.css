@@ -245,10 +245,14 @@ body {
   line-height: 10px;
 }
 .delete-element {
-  height: 20px;
-  width: 250px;
+  color: red;
   border: solid 1px;
-  display: inline-block;
+  border-radius: 12px;
+  height: 26px;
+  width: 27px;
+  text-align: center;
+  padding-top: 4px;
+  padding-right: 1px;
 }
 .a-complex-grid {
   border: solid 1px;

@@ -48,7 +48,7 @@ class CraftBoard extends Component {
                var thumbnail_data = res;
 
                // handle the data here
-               
+
             },
             error: function(res){
                console.log("get_thumbnail error");
@@ -96,8 +96,7 @@ class CraftBoard extends Component {
                <button className={'common-btn toggle-view-btn'} onClick={this.switchToMobile}>
                   Toggle View
                </button>
-               <div id="delete-element" className="delete-element" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
-                  DELETE COMP (Drop here)
+               <div id="delete-element" className="glyphicon glyphicon-trash delete-element" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
                </div>
             </div>
             <div className="go-left" onClick={this.showCompList}>
@@ -182,10 +181,10 @@ class CraftBoard extends Component {
             </div>
             <div id='comp-json' className="right-section">
                <div className="col-md-12">
-                  <button onClick={this.saveTheme}>
+                  <button  className={'common-btn'} onClick={this.saveTheme}>
                      Save The theme
                   </button>
-                  <Link to={'/builder-test/'}>
+                  <Link to={'/builder-test/'} className={'common-btn'}>
                      Preview
                   </Link>
                </div>
