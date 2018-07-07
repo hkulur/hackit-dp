@@ -27,12 +27,34 @@ class CraftBoard extends Component {
    componentWillMount() {
       $.ajax({
          url: "http://192.168.3.92:8000/theme/get_theme/",
-         method: "POST",
-         data: JSON.stringify({name: "GALE", json_data: window.tree, site_thumb: JSON.stringify(window.treeThumb) }),
+         method: "GET",
+         // data: JSON.stringify({name: "GALE", json_data: window.tree, site_thumb: JSON.stringify(window.treeThumb) }),
          success: function(res){
+            console.log("get_theme success");
+            console.log(res);
+         },
+         error: function(res){
+            console.log("get_theme error");
             console.log(res);
          }
       });
+
+      $.ajax({
+            url: "http://192.168.3.92:8000/theme/get_thumbnails/",
+            method: "GET",
+            success: function(res){
+               console.log("get_thumbnail success");
+               console.log(res);
+               var thumbnail_data = res;
+
+               // handle the data here
+               
+            },
+            error: function(res){
+               console.log("get_thumbnail error");
+               console.log(res);
+            }
+         });
    }
    saveTheme() {
       $.ajax({
