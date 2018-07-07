@@ -236,9 +236,7 @@ class FolderStructure extends Component {
     return (
       <div className="col-md-12 v-dir">
         <h1>Assets Directory <span className="close-icon" onClick={this.closeModal}><b>X</b></span></h1>
-        
-        <input className='col-md-10' id='searchStr'></input>
-        <button className="search col-md-2" onClick={() => this.searchFile()}>search</button>
+        <input className='col-md-10' id='searchStr' onChange={() => this.searchFile()}></input>
         <div className="col-md-10">
           {this.getStructure(data)}
         </div>
