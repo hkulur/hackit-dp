@@ -9,7 +9,7 @@ class ATest extends Component {
    render() {
     return (
          <div className="col-md-12">
-            THIS is a static ROW
+          THIS is a static ROW
          </div>
       );
    }
