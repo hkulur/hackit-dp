@@ -38,15 +38,16 @@ class Folder extends Component {
     const { name, id, children, addingValue, setValue, setValueIn, newValue, addNewName, onAddClick } = this.props;
     const { isOpen, isAdding } = this.state;
     return (
-      <div className="folder-icon" onDoubleClick={() => { this.addNew(); }}>
-        {name}:
-        <span onClick={() => { this.toggle(); }} className="small-plus"> + </span>
-        {isAdding &&
-          <select value={addingValue} onChange={(e) => { setValue(e.target.value, id); this.setState({ isOpen: true }); }}>
-            <option value="file">Add a page</option>
-            <option value="folder">Add a branch(Group of many page)</option>
-          </select>
-        }
+      <div>
+        <div className="dropdown">
+          <button className="btn btn-default dropdown-toggle branch-drop-down" type="button" data-toggle="dropdown">{name}
+          <span className="caret"></span></button>
+          <ul className="dropdown-menu">
+            <li onClick={() => { this.toggle(); }}>Expand/ Collapse</li>
+            <li onClick={(e) => { setValue('file', id); this.setState({ isOpen: true });}}>Add filer</li>
+            <li onClick={(e) => { setValue('folder', id); this.setState({ isOpen: true }); }}>New Folder</li>
+          </ul>
+        </div>
         {isOpen &&
           <div>
             {children}
@@ -175,7 +176,7 @@ class FolderStructure extends Component {
           const display = dt.display;
           if (dt.type === 'folder') {
             return (
-              <div style={{ marginTop: '20px', paddingLeft: '40px', display}}>
+              <div style={{ marginTop: '5px', paddingLeft: '50px', display}}>
                 <Folder
                   key={dt.id}
                   name={dt.name}
@@ -193,16 +194,19 @@ class FolderStructure extends Component {
             );
           } else {
             return (
-              <div style={{ marginTop: '20px', paddingLeft: '40px', display}}>
-                <div className="page-icon">
-                  <span className="text">
-                    {dt.name} page
-                  </span>
+              <div style={{ marginTop: '5px', paddingLeft: '50px'}}>
+                <div className="dropdown">
+                    <button className="btn btn-default dropdown-toggle page-drop-down" type="button" data-toggle="dropdown">{dt.name} ( page )
+                    <span className="caret"></span></button>
+                    <ul className="dropdown-menu">
+                      <li onClick={() => this.editPage(dt.name)}>Edit</li>
+                      <li onClick={() => this.deleteStructure(dt.id)}>Delete</li>
+                    </ul>
+                  </div>
                   <div id={`data-connect${dt.id}`} className="connector-dot" draggable="true" onDragStart={utils.drag.bind(utils)}>
                   </div>
                   <div className="store-connector-line" id={`data-connect${dt.id}-line`} data-pagename={dt.name}>
                   </div>
-                </div>
               </div>
             );
           }
@@ -230,18 +234,25 @@ class FolderStructure extends Component {
     const data = this.filterTheStructure(this.state.data);
     this.setState({ searchStr, data: data[0] });
   }
+  saveDir() {
+    document.getElementById('dir-tree').innerHTML = JSON.stringify(this.state.data, null, 2); 
+  }
   render() {
     const { data, dataStore } = this.state;
     console.log(data, 'new');
     return (
       <div className="col-md-12 v-dir">
         <h1>Assets Directory <span className="close-icon" onClick={this.closeModal}><b>X</b></span></h1>
-        <input className='col-md-4' id='searchStr' onChange={() => this.searchFile()}></input>
+        <input className='col-md-6' placeholder="Search your component here" id='searchStr' onChange={() => this.searchFile()}></input>
+        <button className="common-btn build-tree-btn" onClick={() => this.saveDir()}> Save your Directory</button>
         <div className="col-md-10">
           {this.getStructure(data)}
         </div>
         <div className="col-md-2 data-claster-holder">
           {this.getDataClaster()}
+        </div>
+        <div id='dir-tree'>
+
         </div>
       </div>
     );

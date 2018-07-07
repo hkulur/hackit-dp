@@ -148,7 +148,7 @@ class CraftBoard extends Component {
                   </div>
                   <div className="comp-holder">
                      <span> component 5: </span>
-                     <span className="select-for-add" data-forcomp="comp4" onClick={utils.clickForDrag.bind(utils)}> + </span>
+                     <span className="select-for-add" data-forcomp="comp5" onClick={utils.clickForDrag.bind(utils)}> + </span>
                      <div id="comp5" data-compname="a-complex-grid" className="a-complex-grid">
                         <div className="top" id="a-complex-gid-left" data-compname="a-complex-gid-left" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
 

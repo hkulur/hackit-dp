@@ -12,7 +12,7 @@ class ATest extends Component {
             A Second Component {this.props.data.uuid}
             {
                window.data ?
-                  window.data[this.props.pageStore].map(v => {
+                  window.data[this.props.pageStore.contentSource].map(v => {
                      return (
                         <div>
                            <span>

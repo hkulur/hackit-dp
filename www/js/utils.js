@@ -58,11 +58,6 @@ var l  = {
             'meta_data':{
                 'title': 'A default Index Page'
             }
-        },
-        "ADDRESS": {
-            'meta_data': {
-                'title': 'A default Index Page'
-            }
         }
     },
     _UI_THUMB_TREE: {"index": ''},
@@ -135,11 +130,13 @@ var l  = {
         const pageName = connectorLine.dataset.pagename;
         const reqWidth = dataClaster.getBoundingClientRect().x -  connectorLine.getBoundingClientRect().x - dataClaster.dataset.linepos - 18;
         connectorLine.style.width = reqWidth + 'px';
-        this._UI_TREE[pageName].data = dataClaster.dataset.storename;
+        if(!this._UI_TREE[pageName])
+            this._UI_TREE[pageName]={'data': {}};
+        this._UI_TREE[pageName].data['contentSource'] = dataClaster.dataset.storename;
         document.getElementById('the-tree-json').innerHTML = JSON.stringify(this._UI_TREE, undefined, 2);
         window.tree = this._UI_TREE;
     },
-	buildTree: function() {
+    buildTree: function() {
 		const Tree = buildTree(document.getElementById('_root'));
         const pageName = document.getElementById('_root').getAttribute('data-compname');
         this._UI_TREE[pageName] = Tree;

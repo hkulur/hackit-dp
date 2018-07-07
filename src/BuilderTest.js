@@ -37,8 +37,9 @@ class BuilderTest extends Component {
    		const self=this;
    		for(var i=0;i<apiList.length;i++)
    		{
+   			if(!apiList[i].contentSource) continue;
    			$.ajax({
-		            url:  "http://192.168.3.92:8000/theme/"+apiList[i]+"/",
+		            url:  "http://192.168.3.92:8000/theme/"+apiList[i].contentSource+"/",
 		            type: 'GET',
 		            success: function(res) {
 		            	if(!window.data) {

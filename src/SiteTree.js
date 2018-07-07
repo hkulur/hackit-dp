@@ -10,26 +10,7 @@ const folderData ={
       id: Math.random(),
       type: 'folder',
       name: '__Root',
-      child: [
-        {
-          id: Math.random(),
-          type: 'folder',
-          name: 'HOME PAGE',
-          child: []
-        },
-        {
-          id: Math.random(),
-          type: 'folder',
-          name: 'ABOUT US',
-          child: [
-            {
-              id: Math.random(),
-              type: 'file',
-              name: 'ADDRESS',
-            }
-          ]
-        }
-      ],
+      child: [],
     }
   ]
 }
