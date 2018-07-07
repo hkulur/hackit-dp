@@ -53,6 +53,11 @@ class CraftBoard extends Component {
       const board = document.getElementById('board');
       board.classList.toggle('mobile');
    }
+   addAssets() {
+      console.log('fire');
+      const y=document.getElementById('v-directory');
+      y && y.classList.toggle('show');
+   };
    render() {
       return (
          <div className="the-container">
@@ -65,6 +70,9 @@ class CraftBoard extends Component {
                </button>
                <button className={'common-btn toggle-view-btn'} onClick={this.switchToMobile}>
                   Toggle View
+               </button>
+               <button className="add-assets" onClick={this.addAssets}>
+                  Asset management
                </button>
             </div>
             <div className="go-left" onClick={this.showCompList}>

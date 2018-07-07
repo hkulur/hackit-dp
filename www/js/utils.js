@@ -2,10 +2,13 @@
 var pickFrom = '';
 var dropTo = '';
 document.onload = function(e) {
-    console.log(document.querySelectorAll(".add-assets"));
-    document.querySelectorAll(".add-assets").addEventListener('click', function() {
-        console.log('fire');
-    });
+    var addAssets = document.querySelectorAll(".add-assets");
+    console.log('ola');
+    for (var i = 0; i < addAssets.length; i++) {
+        addAssets[i].addEventListener('click', function() {
+            document.getElementById('v-directory').classList.toggle('show');
+        });
+    }
 }
 var findVal = function(object, key, op, val) {
     var value;
