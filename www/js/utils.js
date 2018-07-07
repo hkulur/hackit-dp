@@ -34,17 +34,14 @@ var buildTree = function(node) {
             return {
                 component: (node.dataset && node.dataset.compname),
                 child: children,
-                data: {}
             };
         else return {
-            component: (node.dataset && node.dataset.compname),
-            data: {}
+            component: (node.dataset && node.dataset.compname)
         };
     }
     if (node && node.dataset && node.dataset.compname) {
     	return {
-        	component: (node.dataset && node.dataset.compname),
-        	data: {}
+        	component: (node.dataset && node.dataset.compname)
         };
     }
     return null;
@@ -125,6 +122,7 @@ var l  = {
         const reqWidth = dataClaster.getBoundingClientRect().x -  connectorLine.getBoundingClientRect().x - dataClaster.dataset.linepos - 12;
         connectorLine.style.width = reqWidth + 'px';
         this._UI_TREE[pageName].data = dataClaster.dataset.storename;
+        document.getElementById('the-tree-json').innerHTML = JSON.stringify(this._UI_TREE, undefined, 2);
         window.tree = this._UI_TREE;
     },
 	buildTree: function() {

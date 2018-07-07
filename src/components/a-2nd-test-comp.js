@@ -7,9 +7,28 @@ class ATest extends Component {
     console.log(this.props);
    }
    render() {
-   	return (
+      return (
          <div className="col-md-12 a-test-component">
             A Second Component
+            { 
+               window.data ? 
+                  window.data[this.props.pageStore].map(v => {
+                     return (
+                        <div>
+                           <span>
+                              {v.username}<br/>
+                           </span>
+                           <span>
+                              {v.age}<br/>
+                           </span>
+                           <span>
+                              {v.phone}
+                           </span>
+                        </div>
+                     );
+                  })
+                  : null
+            }
          </div>
       );
    }

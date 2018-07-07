@@ -105,7 +105,7 @@ class FolderStructure extends Component {
       addingValue: 'Select',
       setValueIn: '',
       newValue: '',
-      dataStore: ['user data', 'item data', 'location data'],
+      dataStore: ['userData', 'itemData', 'locationData'],
     };
   }
 

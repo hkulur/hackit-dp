@@ -7,9 +7,10 @@ class ATest extends Component {
     console.log(this.props);
    }
    render() {
+      const { children } = this.props;
    	return (
          <div className="col-md-12">
-            A Second Component
+            {children}
          </div>
       );
    }
