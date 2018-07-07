@@ -11,8 +11,6 @@ class App extends Component {
       return (
          <Router>
             <Switch>
-               {/* <Route path='/builder/' component={Builder} />
-               <Route path='/builder-test/' component={BuilderTest} /> */}
                <Route path='/base/' component={FolderStructure} />
                <Route path='/builder/' component={Builder} />
                <Route path='/builder-test/' component={BuilderTest} />

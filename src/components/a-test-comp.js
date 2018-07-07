@@ -3,10 +3,32 @@ class ATest extends Component {
    super(props) {
 
    };
+   componentWillMount() {
+    console.log(this.props);
+   }
    render() {
-   	return (
+      return (
          <div className="col-md-12 a-test-component">
-            Test Component
+            A Second Component
+            { 
+               window.data ? 
+                  window.data[this.props.pageStore].map(v => {
+                     return (
+                        <div>
+                           <span>
+                              {v.carname}<br/>
+                           </span>
+                           <span>
+                              {v.cost}<br/>
+                           </span>
+                           <span>
+                              {v.color}
+                           </span>
+                        </div>
+                     );
+                  })
+                  : null
+            }
          </div>
       );
    }

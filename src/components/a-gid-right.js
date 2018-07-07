@@ -5,8 +5,7 @@ class ATest extends Component {
    };
    render() {
    	return (
-         <div className="col-md-12">
-            Right Side
+         <div className="left">
             {this.props.children}
          </div>
       );

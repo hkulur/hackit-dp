@@ -8,8 +8,7 @@ class ATest extends Component {
    }
    render() {
    	return (
-         <div className="col-md-12">
-            Grid
+         <div className="a-grid">
             {this.props.children}
          </div>
       );
