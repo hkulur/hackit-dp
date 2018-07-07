@@ -107,6 +107,7 @@ body {
   width: 10px;
   border: solid 1px #fff;
   display: inline-block;
+  background-color: #fff;
 }
 .data-connector-color {
   position: absolute;
@@ -177,8 +178,12 @@ body {
   border-radius: 20px;
   display: inline-block;
   width: 150px;
-  background-color: #ff661b;
+  background-color: #050d9e;
   color: #fff;
+}
+.branch-drop-down {
+  background-color: #ff661b !important;
+  text-shadow: none !important;
 }
 .site-tree {
   background-color: #ccc;
@@ -309,6 +314,14 @@ body {
 }
 .btn.btn-default.dropdown-toggle {
   width: 150px !important;
+  color: #fff;
+}
+.btn.caret {
+  margin-left: 8px !important;
+}
+.page-drop-down {
+  background-color: #00bcaa !important;
+  text-shadow: none !important;
 }
 .dropdown-menu {
   padding-left: 10px !important;
