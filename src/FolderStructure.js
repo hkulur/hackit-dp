@@ -39,18 +39,18 @@ class Folder extends Component {
     const { isOpen, isAdding } = this.state;
     return (
       <div className="folder-icon" onDoubleClick={() => { this.addNew(); }}>
-        {name}: 
+        {name}:
         <span onClick={() => { this.toggle(); }} className="small-plus"> + </span>
-        {isAdding && 
+        {isAdding &&
           <select value={addingValue} onChange={(e) => { setValue(e.target.value, id); this.setState({ isOpen: true }); }}>
             <option value="file">Add a page</option>
             <option value="folder">Add a branch(Group of many page)</option>
           </select>
         }
-        {isOpen && 
+        {isOpen &&
           <div>
             {children}
-            {addingValue !== '' && setValueIn === id && 
+            {addingValue !== '' && setValueIn === id &&
               <div>
                 <input type='text' value={newValue} onChange={(e) => { addNewName(e.target.value); }} placeholder={`Enter ${addingValue} name`} />
                 <button onClick={() => { onAddClick(); this.setState({ isOpen: true }); }}>Add</button>
@@ -116,12 +116,12 @@ class FolderStructure extends Component {
         console.log('HIT');
         if (addingValue === 'folder') {
           data[i].child.push({ id: Math.random(), name: newValue, type: addingValue, child: [] });
-          // data[kys[i]].child = {...data[kys[i]].child, newValue: { id: 1234, name: newValue, type: addingValue, child: [] }}; 
+          // data[kys[i]].child = {...data[kys[i]].child, newValue: { id: 1234, name: newValue, type: addingValue, child: [] }};
         } else {
           data[i].child.push({ id: Math.random(), name: newValue, type: addingValue });
-          // data[kys[i]].child = {...data[kys[i]].child, newValue: { id: 1234, name: newValue, type: addingValue }}; 
+          // data[kys[i]].child = {...data[kys[i]].child, newValue: { id: 1234, name: newValue, type: addingValue }};
         }
-        
+
         return data;
       } else {
         data[i].child = this.trace(data[i].child,lookingFor);
@@ -136,7 +136,7 @@ class FolderStructure extends Component {
     const ka = this.trace(JSON.parse(JSON.stringify(data.child)), this.state.setValueIn);
     data.child = ka;
     this.setState({ data, addingValue: '' });
-    
+
   }
   filterTheStructure(data) {
     let isFound = false;
@@ -213,7 +213,7 @@ class FolderStructure extends Component {
     return this.state.dataStore.map((d, i) => {
       const color = "#"+((1<<24)*Math.random()|0).toString(16);
       return (
-        <div className="data-claster" id={Math.random()} data-storename={d} onDrop={utils.connectedToDataStore.bind(utils)} data-linepos={`${(i * 20)}`} onDragOver={utils.allowDrop}>
+        <div className="data-claster common-btn" id={Math.random()} data-storename={d} onDrop={utils.connectedToDataStore.bind(utils)} data-linepos={`${(i * 20)}`} onDragOver={utils.allowDrop}>
           <div className="data-connector-color" style={{ left: `${(i * 20 * -1)}px`, top: `${(i * 50 + 10)}px`, backgroundColor: color }}></div>
           <div className="data-connector-color-v" style={{ left: `${(i * 20 * -1)}px`, width: `${((i+1) * 20)}px`, top: `${(i * 50 + 10)}px`, backgroundColor: color }}></div>
           {d}
@@ -236,7 +236,7 @@ class FolderStructure extends Component {
     return (
       <div className="col-md-12 v-dir">
         <h1>Assets Directory <span className="close-icon" onClick={this.closeModal}><b>X</b></span></h1>
-        <input className='col-md-10' id='searchStr' onChange={() => this.searchFile()}></input>
+        <input className='col-md-4' id='searchStr' onChange={() => this.searchFile()}></input>
         <div className="col-md-10">
           {this.getStructure(data)}
         </div>

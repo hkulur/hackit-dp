@@ -58,11 +58,10 @@ class Folder extends Component {
     return (
       <div>
         <div className="dropdown">
-          <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{name}
+          <button className="btn btn-default dropdown-toggle branch-drop-down" type="button" data-toggle="dropdown">{name}
           <span className="caret"></span></button>
           <ul className="dropdown-menu">
-            <li onClick={() => { this.addNew(); }}>Add new Sub items</li>
-            <li onClick={() => { this.toggle(); }}>Expand</li>
+            <li onClick={() => { this.toggle(); }}>Expand/ Collapse</li>
             <li onClick={(e) => { setValue('file', id); this.setState({ isOpen: true });}}>Add Page</li>
             <li onClick={(e) => { setValue('folder', id); this.setState({ isOpen: true }); }}>Add Branch</li>
           </ul>
@@ -208,7 +207,7 @@ class FolderStructure extends Component {
             return (
               <div style={{ marginTop: '5px', paddingLeft: '100px'}}>
                 <div className="dropdown">
-                    <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{dt.name}(page)
+                    <button className="btn btn-default dropdown-toggle page-drop-down" type="button" data-toggle="dropdown">{dt.name} ( page )
                     <span className="caret"></span></button>
                     <ul className="dropdown-menu">
                       <li onClick={() => this.editPage(dt.name)}>Edit</li>
@@ -229,7 +228,7 @@ class FolderStructure extends Component {
     return this.state.dataStore.map((d, i) => {
       const color = "#"+((1<<24)*Math.random()|0).toString(16);
       return (
-        <div className="data-claster" id={Math.random()} data-storename={d} onDrop={utils.connectedToDataStore.bind(utils)} data-linepos={`${(i * 20)}`} onDragOver={utils.allowDrop}>
+        <div className="data-claster common-btn" id={Math.random()} data-storename={d} onDrop={utils.connectedToDataStore.bind(utils)} data-linepos={`${(i * 20)}`} onDragOver={utils.allowDrop}>
           <div className="data-connector-color" style={{ left: `${(i * 20 * -1)}px`, top: `${(i * 50 + 10)}px`, backgroundColor: color }}></div>
           <div className="data-connector-color-v" style={{ left: `${(i * 20 * -1)}px`, width: `${((i+1) * 20)}px`, top: `${(i * 50 + 10)}px`, backgroundColor: color }}></div>
           {d}
