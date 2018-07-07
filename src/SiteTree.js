@@ -7,23 +7,23 @@ import utils from '../www/js/utils.js';
 const folderData ={
   child: [
     {
-      id: 1,
+      id: Math.random(),
       type: 'folder',
       name: '__Root',
       child: [
         {
-          id: 11,
+          id: Math.random(),
           type: 'folder',
           name: 'HOME PAGE',
           child: []
         },
         {
-          id: 12, 
+          id: Math.random(), 
           type: 'folder',
           name: 'ABOUT US',
           child: [
             {
-              id: 123,
+              id: Math.random(),
               type: 'file',
               name: 'ADDRESS',
             }
@@ -132,10 +132,10 @@ class FolderStructure extends Component {
       if(dt.id === lookingFor) {
         console.log('HIT');
         if (addingValue === 'folder') {
-          data[i].child.push({ id: 888, name: newValue, type: addingValue, child: [] });
+          data[i].child.push({ id: Math.random(), name: newValue, type: addingValue, child: [] });
           // data[kys[i]].child = {...data[kys[i]].child, newValue: { id: 1234, name: newValue, type: addingValue, child: [] }}; 
         } else {
-          data[i].child.push({ id: 777, name: newValue, type: addingValue });
+          data[i].child.push({ id: Math.random(), name: newValue, type: addingValue });
           // data[kys[i]].child = {...data[kys[i]].child, newValue: { id: 1234, name: newValue, type: addingValue }}; 
         }
         
@@ -182,7 +182,7 @@ class FolderStructure extends Component {
             );
           } else {
             return (
-              <div style={{ marginTop: '20px', paddingLeft: '20px'}}>
+              <div style={{ marginTop: '20px', paddingLeft: '100px'}}>
                 <div className="page-icon">
                   <span className="text">
                     {dt.name} page

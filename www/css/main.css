@@ -23,6 +23,20 @@
   text-align: center;
   display: inline-block;
 }
+.folder-icon {
+  padding: 5px;
+  border: solid 2px #fff;
+  width: 45px;
+  height: 50px;
+  font-size: 10px;
+  text-align: center;
+  background-color: #ffa;
+}
+.small-plus {
+  padding: 10px;
+  border: solid 1px #fff;
+  font-size: 15px;
+}
 .v-directory {
   position: fixed;
   top: 0;
@@ -220,6 +234,7 @@
 }
 .close-icon {
   border: solid 1px;
+  float: right;
 }
 .go-left {
   z-index: 100;
