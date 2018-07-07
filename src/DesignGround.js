@@ -83,10 +83,10 @@ class CraftBoard extends Component {
    render() {
       return (
          <div className="the-container">
-            <div className=" site-tree-btn common-btn" onClick={this.showSiteTree}>
-               Site Tree
-            </div>
             <div className="col-md-12 button-list">
+               <div className=" site-tree-btn common-btn" onClick={this.showSiteTree}>
+                  Site Tree
+               </div>
                <button className="add-assets common-btn asset-mgmt-btn" onClick={this.addAssets}>
                   Asset management
                </button>
