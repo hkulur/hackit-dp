@@ -63,6 +63,7 @@ class BuilderTest extends Component {
 			}
 		}
 		var Ele=AllComponents[node.component];
+		node.data['uuid'] = pName;
 		if (Ele) {
 			return <Ele pageStore={pageStore} data={{...node.data}} key={Math.random()}>{child}</Ele>;
 		} else {

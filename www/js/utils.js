@@ -37,14 +37,17 @@ var buildTree = function(node) {
             return {
                 component: (node.dataset && node.dataset.compname),
                 child: children,
+                data: {}
             };
         else return {
-            component: (node.dataset && node.dataset.compname)
+            component: (node.dataset && node.dataset.compname),
+            data: {}
         };
     }
     if (node && node.dataset && node.dataset.compname) {
     	return {
-        	component: (node.dataset && node.dataset.compname)
+        	component: (node.dataset && node.dataset.compname),
+            data: {}
         };
     }
     return null;

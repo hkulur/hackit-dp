@@ -61,22 +61,22 @@ class CraftBoard extends Component {
    render() {
       return (
          <div className="the-container">
-            <div className="go-left" onClick={this.showCompList}>
-               Component List
-            </div>
-            <div className="site-tree-button" onClick={this.showSiteTree}>
+            <div className=" site-tree-btn common-btn" onClick={this.showSiteTree}>
                Site Tree
             </div>
             <div className="col-md-12 button-list">
-               <button onClick={utils.buildTree.bind(utils)}>
-                  Build The tree
-               </button>
-               <button onClick={this.switchToMobile}>
-                  switch to mobile view
-               </button>
-               <button className="add-assets" onClick={this.addAssets}>
+               <button className="add-assets common-btn asset-mgmt-btn" onClick={this.addAssets}>
                   Asset management
                </button>
+               <button  className={'common-btn build-tree-btn'} onClick={utils.buildTree.bind(utils)}>
+                  Build Tree
+               </button>
+               <button className={'common-btn toggle-view-btn'} onClick={this.switchToMobile}>
+                  Toggle View
+               </button>
+            </div>
+            <div className="go-left" onClick={this.showCompList}>
+               &gt;
             </div>
             <div id='site-tree' className="col-md-12 site-tree">
                <SiteTree />
@@ -128,14 +128,14 @@ class CraftBoard extends Component {
 
                </div>
                <div className='selected-one' id='selected-one' >
-                  
+
                </div>
                <div id="v-directory" className="v-directory">
                   <FolderStructure />
                </div>
             </div>
             <div id='comp-json' className="right-section">
-               <div className="col-md-12"> 
+               <div className="col-md-12">
                   <button onClick={this.saveTheme}>
                      Save The theme
                   </button>

@@ -9,9 +9,9 @@ class ATest extends Component {
    render() {
       return (
          <div className="col-md-12 a-test-component">
-            A Second Component
-            { 
-               window.data ? 
+            A Second Component {this.props.data.uuid}
+            {
+               window.data ?
                   window.data[this.props.pageStore].map(v => {
                      return (
                         <div>
