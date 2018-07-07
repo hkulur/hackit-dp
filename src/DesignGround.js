@@ -96,6 +96,9 @@ class CraftBoard extends Component {
                <button className={'common-btn toggle-view-btn'} onClick={this.switchToMobile}>
                   Toggle View
                </button>
+               <div id="delete-element" className="delete-element" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
+                  DELETE COMP (Drop here)
+               </div>
             </div>
             <div className="go-left" onClick={this.showCompList}>
                &gt;
@@ -143,11 +146,32 @@ class CraftBoard extends Component {
                         </div>
                      </div>
                   </div>
+                  <div className="comp-holder">
+                     <span> component 5: </span>
+                     <span className="select-for-add" data-forcomp="comp4" onClick={utils.clickForDrag.bind(utils)}> + </span>
+                     <div id="comp5" data-compname="a-complex-grid" className="a-complex-grid">
+                        <div className="top" id="a-complex-gid-left" data-compname="a-complex-gid-left" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
+
+                        </div>
+                        <div className="mid">
+                           <div className="mid-left"  id="complex-grid-mid-left" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
+                           </div>
+                           <div className="mid-right" id="complex-grid-mid-left" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
+                           </div>
+                        </div>
+                        <div className="bottom" id="a-complex-gid-left" data-compname="a-complex-gid-right" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
+
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
             <div className="mid-section" id="board">
                <div className='the-editor' id="_root" data-compname="index-page" onDrop={utils.drop.bind(utils)} onDragOver={utils.allowDrop}>
-
+                  <span className="quote" id="quote">
+                     <h1>Drag D </h1>
+                     <br/>Small things that make impact
+                  </span>
                </div>
                <div className='selected-one' id='selected-one' >
 

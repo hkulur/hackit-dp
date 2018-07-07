@@ -96,6 +96,10 @@ var l  = {
         var compList = document.querySelector('#comp-list'); // Using a class instead, see note below.
         compList.classList.toggle('show');
         var addAssets = document.querySelectorAll(".add-assets");
+        var q = document.getElementById('quote');
+        if(q) {
+            q.remove();
+        }
         for (var i = 0; i < addAssets.length; i++) {
             addAssets[i].addEventListener('click', function() {
                 document.getElementById('v-directory').classList.toggle('show');
@@ -106,7 +110,11 @@ var l  = {
 	    ev.preventDefault();
 	    var data = ev.dataTransfer.getData("text");
 	    dropTo = ev.target.id;
-	    const originalChild = document.getElementById(data);
+        const originalChild = document.getElementById(data);
+        if(dropTo === 'delete-element'){
+            originalChild.remove();
+            return null
+        }
         var newChild = {};
         if (originalChild.dataset.noclone === 'true') {
             newChild = originalChild;
