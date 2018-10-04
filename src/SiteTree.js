@@ -64,12 +64,6 @@ class Folder extends Component {
 }
 
 class File extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
   render() {
     const { name, id } = this.props;
     return (
