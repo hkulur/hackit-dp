@@ -16,9 +16,10 @@ class RegisterComponent extends Component {
    searchComp() {
       const component = document.getElementById('register-component-name').value;
       const title = document.getElementById('register-component-title').value;
+      const testElm = document.getElementById('test-id');
       var Ele=AllComponents[component];
       if (Ele) {
-         document.getElementById('test-id').innerHTML = ReactDOMServer.renderToString(<Ele />);
+         testElm.innerHTML = ReactDOMServer.renderToString(<Ele />);
          this.setState({ showRegisterButton: true, component, title });
       } else {
          document.getElementById('test-id').innerHTML = ReactDOMServer.renderToString(<div>NO Such Component Found</div>);
